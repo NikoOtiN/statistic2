@@ -10,7 +10,8 @@ class Dialog;
 struct dialog_data{
     double expected;
     double deviation;
-    double inc;
+    QVector<double> trend_mean;
+    QVector<double> trend_s;
     double count_level;
     double n;
     double a;
@@ -24,8 +25,6 @@ public:
     explicit Dialog(QWidget *parent = 0);
     ~Dialog();
     dialog_data getParam();
-public slots:
-    void checkForm();
 private:
     Ui::Dialog *ui;
 };

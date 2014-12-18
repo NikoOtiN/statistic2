@@ -15,9 +15,19 @@ QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    all_func.cpp
+    all_func.cpp \
+    dialog.cpp
 
 HEADERS  += mainwindow.h \
-    all_func.h
+    all_func.h \
+    dialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    dialog.ui
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Qwt-6.1.1/lib/ -lqwt
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Qwt-6.1.1/lib/ -lqwtd
+else:unix: LIBS += -L$$PWD/../../../../../Qwt-6.1.1/lib/ -lqwt
+
+INCLUDEPATH += $$PWD/../../../../../Qwt-6.1.1/include
+DEPENDPATH += $$PWD/../../../../../Qwt-6.1.1/include
